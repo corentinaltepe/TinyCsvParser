@@ -40,19 +40,12 @@ namespace TinyCsvParser
             return csvParser.ParseAsync(lines);
         }
 
-        private static IAsyncEnumerable<string> ReadLinesFromStreamAsync(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks = false, int bufferSize = 1024, bool leaveOpen = false)
+        private static async IAsyncEnumerable<string> ReadLinesFromStreamAsync(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks = false, int bufferSize = 1024, bool leaveOpen = false)
         {
-            return ReadLinesFromStream(stream, encoding, detectEncodingFromByteOrderMarks, bufferSize, leaveOpen);
-        }
-        
-        private static async IAsyncEnumerable<string> ReadLinesFromStream(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks = false, int bufferSize = 1024, bool leaveOpen = false)
-        {
-            using (var reader = new StreamReader(stream, encoding, detectEncodingFromByteOrderMarks, bufferSize, leaveOpen))
+            using var reader = new StreamReader(stream, encoding, detectEncodingFromByteOrderMarks, bufferSize, leaveOpen);
+            while (!reader.EndOfStream)
             {
-                while (!reader.EndOfStream)
-                {
-                    yield return await reader.ReadLineAsync();
-                }
+                yield return await reader.ReadLineAsync();
             }
         }
 
