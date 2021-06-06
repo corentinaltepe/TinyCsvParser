@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TinyCsvParser.Mapping;
 using TinyCsvParser.Tokenizer;
 
@@ -29,7 +30,7 @@ namespace TinyCsvParser.Test.Tokenizer
         }
 
         [TestMethod]
-        public async void QuotedStringTokenizerExampleTest()
+        public async Task QuotedStringTokenizerExampleTest()
         {
             CsvParserOptions csvParserOptions = new CsvParserOptions(true, string.Empty, new QuotedStringTokenizer(','));
             CsvReaderOptions csvReaderOptions = new CsvReaderOptions(new[] { Environment.NewLine });

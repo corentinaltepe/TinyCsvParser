@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TinyCsvParser.Mapping;
 using TinyCsvParser.Tokenizer.RFC4180;
 
@@ -33,7 +34,7 @@ namespace TinyCsvParser.Test.Tokenizer
         }
 
         [TestMethod]
-        public async void RFC4180_CsvParser_Integration_Test()
+        public async Task RFC4180_CsvParser_Integration_Test()
         {
             // Use a " as Quote Character, a \\ as Escape Character and a , as Delimiter.
             var options = new Options('"', '\\', ',');
@@ -51,7 +52,7 @@ namespace TinyCsvParser.Test.Tokenizer
                 .AppendLine("Name, Age, Description")
                 .AppendLine("\"Michael, Chester\",24,\"Also goes by \"\"Mike\"\", among friends that is\"")
                 .AppendLine("\"Robert, Willliamson\", , \"All-around nice guy who always says hi\"");
-            
+
             // Define the NewLine Character to split at:
             CsvReaderOptions csvReaderOptions = new CsvReaderOptions(new[] { Environment.NewLine });
 
