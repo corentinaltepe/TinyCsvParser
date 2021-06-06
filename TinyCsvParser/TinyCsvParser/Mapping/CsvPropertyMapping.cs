@@ -1,5 +1,4 @@
-﻿// Copyright (c) Philipp Wagner. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Linq.Expressions;
@@ -8,7 +7,7 @@ using TinyCsvParser.TypeConverter;
 
 namespace TinyCsvParser.Mapping
 {
-    public class CsvPropertyMapping<TEntity, TProperty> : ICsvPropertyMapping<TEntity>
+    public class CsvPropertyMapping<TEntity, TProperty> : ICsvPropertyMapping<TEntity, string>
         where TEntity : class, new()
     {
         private readonly string propertyName;

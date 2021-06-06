@@ -1,14 +1,13 @@
-﻿// Copyright (c) Philipp Wagner. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Globalization;
 using TinyCsvParser.TypeConverter;
 
 namespace TinyCsvParser.Test.TypeConverter
 {
-    [TestClass]
+    [TestFixture]
     public class NullableDecimalConverterTest : BaseConverterTest<Decimal?>
     {
         protected override ITypeConverter<Decimal?> Converter
@@ -39,7 +38,7 @@ namespace TinyCsvParser.Test.TypeConverter
         }
     }
 
-    [TestClass]
+    [TestFixture]
     public class NullableDecimalConverterWithFormatProviderTest : NullableDecimalConverterTest
     {
         protected override ITypeConverter<Decimal?> Converter
@@ -48,7 +47,7 @@ namespace TinyCsvParser.Test.TypeConverter
         }
     }
 
-    [TestClass]
+    [TestFixture]
     public class NullableDecimalConverterWithFormatProviderAndNumberStylesTest : NullableDecimalConverterTest
     {
         protected override ITypeConverter<Decimal?> Converter

@@ -1,7 +1,6 @@
-﻿// Copyright (c) Philipp Wagner. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Text;
@@ -11,7 +10,7 @@ using TinyCsvParser.Tokenizer;
 
 namespace TinyCsvParser.Test.Tokenizer
 {
-    [TestClass]
+    [TestFixture]
     public class TokenizerExampleTest
     {
         private class Person
@@ -29,8 +28,8 @@ namespace TinyCsvParser.Test.Tokenizer
             }
         }
 
-        [TestMethod]
-        public async Task QuotedStringTokenizerExampleTest()
+        [Test]
+        public void QuotedStringTokenizerExampleTest()
         {
             CsvParserOptions csvParserOptions = new CsvParserOptions(true, string.Empty, new QuotedStringTokenizer(','));
             CsvReaderOptions csvReaderOptions = new CsvReaderOptions(new[] { Environment.NewLine });
@@ -42,9 +41,9 @@ namespace TinyCsvParser.Test.Tokenizer
                 .AppendLine("\"Philipp,Wagner\",1986/05/12")
                 .AppendLine("\"Max,Mustermann\",2014/01/01");
 
-            var result = await csvParser
-                .ReadFromStringAsync(csvReaderOptions, stringBuilder.ToString())
-                .ToListAsync();
+            var result = csvParser
+                .ReadFromString(csvReaderOptions, stringBuilder.ToString())
+                .ToList();
 
             // Make sure we got 2 results:
             Assert.AreEqual(2, result.Count);

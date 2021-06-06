@@ -1,10 +1,8 @@
-﻿// Copyright (c) Philipp Wagner. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 namespace TinyCsvParser.Mapping
 {
     public class CsvMappingResult<TEntity>
-        where TEntity : class, new()
     {
         public int RowIndex { get; set; }
 
